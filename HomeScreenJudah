@@ -1,1 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Custom Startup Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #1e1e1e, #3c3c3c);
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        h1 {
+            margin-top: 20px;
+            animation: fadeIn 1s ease;
+        }
+        #logo {
+            width: 200px;
+            margin: 20px 0;
+            animation: zoomIn 1s ease;
+        }
+        #search-bar {
+            width: 50%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+            margin-bottom: 20px;
+            animation: slideIn 1s ease;
+        }
+        #links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .link {
+            background: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin: 10px;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        .link:hover {
+            transform: scale(1.1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        #calendar {
+            margin-top: 20px;
+            animation: fadeIn 1s ease;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to My Custom Startup Page</h1>
+    <img id="logo" src="https://techjudah.com/wp-content/uploads/2024/03/TechJudah-Logo.png" alt="TechJudah Logo">
+    <input id="search-bar" type="text" placeholder="Search...">
+    <div id="links">
+        <!-- Shortcut links will be added here -->
+        <a class="link" href="https://www.example.com">Example 1</a>
+        <a class="link" href="https://www.example.com">Example 2</a>
+    </div>
+    <div id="calendar">
+        <h2>Your To-Do List for Today:</h2>
+        <iframe src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID&ctz=America/New_York" style="border: 0; width: 800px; height: 600px;" frameborder="0" scrolling="no"></iframe>
+    </div>
+    
+    <script>
+        // Function to add a new link
+        function addLink(url, text) {
+            const linkContainer = document.getElementById('links');
+            const newLink = document.createElement('a');
+            newLink.className = 'link';
+            newLink.href = url;
+            newLink.innerText = text;
+            linkContainer.appendChild(newLink);
+        }
 
+        // Example of adding a link (you can modify this to take user input)
+        addLink('https://www.google.com', 'Google');
+    </script>
+</body>
+</html>
