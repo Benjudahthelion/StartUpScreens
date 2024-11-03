@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Custom Startup Page</title>
+    <title>My Futuristic Startup Page</title>
     <style>
         /* Reset styles */
         * {
@@ -11,14 +11,14 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body, html {
             height: 100%;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
-            color: #ffffff;
+            color: #00ffc3; /* Futuristic text color */
             text-align: center;
-            background-color: #1a1a1a; /* Fallback background color */
+            background-color: #0a0a0a; /* Fallback background color */
         }
 
         /* Video background */
@@ -30,7 +30,8 @@
             height: 100%;
             object-fit: cover;
             z-index: -1;
-            opacity: 0.7;
+            opacity: 0.6;
+            filter: brightness(0.7);
         }
 
         /* Main container */
@@ -40,17 +41,18 @@
             align-items: center;
             justify-content: center;
             height: 100%;
-            backdrop-filter: blur(4px);
+            backdrop-filter: blur(6px);
         }
 
-        /* Logo styling */
+        /* Logo styling with glow effect */
         #logo {
-            width: 150px;
+            width: 300px;
             margin-bottom: 20px;
-            animation: zoomIn 1s ease;
+            filter: drop-shadow(0 0 10px #00ffc3) drop-shadow(0 0 20px #00ffc3);
+            animation: glowPulse 2s infinite alternate;
         }
 
-        /* Search bar styling */
+        /* Search bar styling with glow effect */
         #search-bar {
             width: 50%;
             padding: 15px;
@@ -58,8 +60,14 @@
             border-radius: 25px;
             border: none;
             text-align: center;
-            margin-bottom: 20px;
             outline: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #00ffc3;
+            box-shadow: 0 0 15px rgba(0, 255, 195, 0.6);
+            transition: box-shadow 0.3s ease;
+        }
+        #search-bar:hover {
+            box-shadow: 0 0 30px rgba(0, 255, 195, 0.8);
         }
 
         /* Links container */
@@ -70,24 +78,27 @@
             margin: 20px 0;
         }
 
-        /* Link button styling */
+        /* Link button styling with animations */
         .link {
-            background: #007BFF;
-            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            color: #00ffc3;
             padding: 10px 20px;
             border-radius: 5px;
             margin: 10px;
             text-decoration: none;
-            transition: transform 0.2s;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.3s;
+            box-shadow: 0 0 10px rgba(0, 255, 195, 0.5);
         }
         .link:hover {
             transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 255, 195, 0.8);
         }
 
         /* Animations */
-        @keyframes zoomIn {
-            from { transform: scale(0.5); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+        @keyframes glowPulse {
+            from { filter: drop-shadow(0 0 10px #00ffc3); }
+            to { filter: drop-shadow(0 0 25px #00ffc3); }
         }
     </style>
 </head>
