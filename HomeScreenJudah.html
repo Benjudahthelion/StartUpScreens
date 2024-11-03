@@ -3,54 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Startup Page</title>
+    <title>My Custom Startup Page</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: #f4f4f4;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            flex-direction: column;
             height: 100vh;
             margin: 0;
         }
+
         h1 {
-            margin-bottom: 20px;
+            color: #333;
         }
+
         .link-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            justify-content: center;
             margin-bottom: 20px;
         }
+
         .link {
-            background-color: #4caf50;
+            background-color: #007bff;
             color: white;
-            text-align: center;
+            padding: 20px;
+            margin: 10px;
             border-radius: 50%;
-            width: 100px;
-            height: 100px;
-            line-height: 100px; /* Vertically centers text */
-            position: relative;
-            font-size: 16px;
+            text-align: center;
             text-decoration: none;
-            transition: background-color 0.3s;
+            width: 80px; /* Adjust width for size */
+            height: 80px; /* Adjust height for size */
+            line-height: 60px; /* Center the text vertically */
+            position: relative; /* For positioning the menu */
+            font-size: 14px; /* Adjust font size */
         }
-        .link:hover {
-            background-color: #45a049;
-        }
+
         .menu-button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
             position: absolute;
             top: 5px;
             right: 5px;
-            cursor: pointer;
-            display: none; /* Hide by default */
+            display: none; /* Hidden by default */
         }
-        .link:hover .menu-button {
+
+        .menu-button:hover {
             display: block; /* Show on hover */
         }
-        .dialog {
+
+        .menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        .menu button {
+            padding: 10px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+        }
+
+        .link:hover .menu {
+            display: block; /* Show menu on hover */
+        }
+
+        #add-shortcut-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 20px; /* Space between buttons */
+        }
+
+        #dialog {
             display: none;
             position: fixed;
             top: 50%;
@@ -58,141 +97,115 @@
             transform: translate(-50%, -50%);
             background-color: white;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            z-index: 1000;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            z-index: 20;
         }
-        .overlay {
+
+        #overlay {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 10;
         }
-        .add-button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .add-button:hover {
-            background-color: #0056b3;
-        }
+
     </style>
 </head>
 <body>
     <h1>My Shortcuts</h1>
-    <div class="link-container" id="link-container">
-        <!-- Example Links -->
-        <a href="https://www.example.com" class="link" target="_blank">Example
-            <span class="menu-button">...</span>
+    <div class="link-container" id="linkContainer">
+        <a href="https://www.google.com" class="link">Google
+            <button class="menu-button">...</button>
+            <div class="menu">
+                <button onclick="openEditDialog(this, 'Google', 'https://www.google.com')">Edit</button>
+                <button onclick="deleteLink(this)">Delete</button>
+            </div>
         </a>
+        <a href="https://www.youtube.com" class="link">YouTube
+            <button class="menu-button">...</button>
+            <div class="menu">
+                <button onclick="openEditDialog(this, 'YouTube', 'https://www.youtube.com')">Edit</button>
+                <button onclick="deleteLink(this)">Delete</button>
+            </div>
+        </a>
+        <!-- Add more shortcuts here -->
     </div>
-    <button class="add-button" id="add-shortcut-btn">Add Shortcut</button>
+    <button id="add-shortcut-btn">Add Shortcut</button>
 
-    <div class="dialog" id="dialog">
+    <div id="dialog">
         <h2>Add Shortcut</h2>
-        <label for="shortcut-name">Name:</label>
-        <input type="text" id="shortcut-name" required><br>
-        <label for="shortcut-url">URL:</label>
-        <input type="text" id="shortcut-url" required><br>
+        <input type="text" id="shortcut-name" placeholder="Shortcut Name">
+        <input type="text" id="shortcut-url" placeholder="Shortcut URL">
         <button id="confirm-add">Add</button>
         <button id="cancel-add">Cancel</button>
     </div>
-    <div class="overlay" id="overlay"></div>
+    <div id="overlay"></div>
 
     <script>
-        // Function to add a new link
         function addLink(name, url) {
-            const linkContainer = document.getElementById('link-container');
+            const linkContainer = document.getElementById('linkContainer');
             const newLink = document.createElement('a');
+            newLink.href = url; // Link to the specified URL
             newLink.className = 'link';
-            newLink.href = url; // Set the href to the entered URL
-            newLink.target = '_blank'; // Open in new tab
             newLink.innerText = name;
 
-            // Menu button
-            const menuButton = document.createElement('span');
+            const menuButton = document.createElement('button');
             menuButton.className = 'menu-button';
             menuButton.innerText = '...';
 
-            // Add event listener for menu button
-            menuButton.onclick = function(event) {
-                event.stopPropagation(); // Prevent click from triggering link navigation
-                const menu = document.createElement('div');
-                menu.style.position = 'absolute';
-                menu.style.top = '100%';
-                menu.style.right = '0';
-                menu.style.backgroundColor = '#ffffff';
-                menu.style.boxShadow = '0 0 5px rgba(0,0,0,0.5)';
-                menu.style.zIndex = '1000';
-                
-                // Edit button
-                const editButton = document.createElement('button');
-                editButton.innerText = 'Edit';
-                editButton.onclick = function() {
-                    openEditDialog(newLink, name, url);
-                    document.body.removeChild(menu); // Remove menu after editing
-                };
+            const menu = document.createElement('div');
+            menu.className = 'menu';
 
-                // Delete button
-                const deleteButton = document.createElement('button');
-                deleteButton.innerText = 'Delete';
-                deleteButton.style.color = '#ff4d4d';
-                deleteButton.style.background = 'transparent';
-                deleteButton.style.border = 'none';
-                deleteButton.style.cursor = 'pointer';
-                deleteButton.onclick = function() {
-                    linkContainer.removeChild(newLink);
-                    document.body.removeChild(menu); // Remove menu after deleting
-                };
-
-                menu.appendChild(editButton);
-                menu.appendChild(deleteButton);
-                newLink.appendChild(menu);
-                document.body.appendChild(menu);
-
-                // Remove menu if clicked elsewhere
-                document.onclick = function() {
-                    if (document.body.contains(menu)) {
-                        document.body.removeChild(menu);
-                    }
-                };
+            const editButton = document.createElement('button');
+            editButton.innerText = 'Edit';
+            editButton.onclick = function() {
+                openEditDialog(newLink, name, url);
             };
 
+            const deleteButton = document.createElement('button');
+            deleteButton.innerText = 'Delete';
+            deleteButton.style.color = '#ff4d4d';
+            deleteButton.onclick = function() {
+                linkContainer.removeChild(newLink);
+            };
+
+            menu.appendChild(editButton);
+            menu.appendChild(deleteButton);
             newLink.appendChild(menuButton);
+            newLink.appendChild(menu);
             linkContainer.appendChild(newLink);
         }
 
-        // Function to open edit dialog
         function openEditDialog(linkElement, oldName, oldUrl) {
             document.getElementById('shortcut-name').value = oldName;
             document.getElementById('shortcut-url').value = oldUrl;
             document.getElementById('dialog').style.display = 'block';
             document.getElementById('overlay').style.display = 'block';
 
-            // Update link on confirm
             document.getElementById('confirm-add').onclick = function() {
                 const newName = document.getElementById('shortcut-name').value;
                 const newUrl = document.getElementById('shortcut-url').value;
                 linkElement.innerText = newName;
-                linkElement.href = newUrl;
+                linkElement.href = newUrl; // Update link to new URL
                 closeDialog();
             };
         }
 
-        // Close dialog function
+        function deleteLink(button) {
+            const linkContainer = document.getElementById('linkContainer');
+            const linkElement = button.closest('.link');
+            linkContainer.removeChild(linkElement);
+        }
+
         function closeDialog() {
             document.getElementById('dialog').style.display = 'none';
             document.getElementById('overlay').style.display = 'none';
         }
 
-        // Open add shortcut dialog
         document.getElementById('add-shortcut-btn').onclick = function() {
             document.getElementById('shortcut-name').value = '';
             document.getElementById('shortcut-url').value = '';
@@ -200,7 +213,6 @@
             document.getElementById('overlay').style.display = 'block';
         };
 
-        // Confirm adding a new shortcut
         document.getElementById('confirm-add').onclick = function() {
             const name = document.getElementById('shortcut-name').value;
             const url = document.getElementById('shortcut-url').value;
@@ -212,8 +224,16 @@
             }
         };
 
-        // Cancel button functionality
         document.getElementById('cancel-add').onclick = closeDialog;
+
+        // Close dialog when clicking outside
+        document.onclick = function(event) {
+            const dialog = document.getElementById('dialog');
+            const overlay = document.getElementById('overlay');
+            if (event.target === overlay) {
+                closeDialog();
+            }
+        };
     </script>
 </body>
 </html>
