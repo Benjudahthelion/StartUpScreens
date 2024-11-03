@@ -20,8 +20,7 @@
             text-align: center;
             background: url('https://images.pexels.com/photos/276452/pexels-photo-276452.jpeg?auto=compress&cs=tinysrgb&w=600') no-repeat center center fixed;
             background-size: cover;
-            background-blend-mode: overlay;
-            background-color: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(5px);
         }
 
         /* Main container */
@@ -31,20 +30,24 @@
             align-items: center;
             justify-content: center;
             height: 100%;
-            backdrop-filter: blur(3px);
+            padding: 20px;
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 255, 195, 0.2);
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
         /* Logo styling with glow effect */
         #logo {
-            width: 300px;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 10px #00ffc3) drop-shadow(0 0 20px #00ffc3);
+            width: 350px;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 15px #00ffc3) drop-shadow(0 0 30px #00ffc3);
             animation: glowPulse 2s infinite alternate;
         }
 
         /* Search bar styling with glow effect */
         #search-bar {
-            width: 50%;
+            width: 60%;
             padding: 15px;
             font-size: 18px;
             border-radius: 25px;
@@ -55,6 +58,7 @@
             color: #00ffc3;
             box-shadow: 0 0 15px rgba(0, 255, 195, 0.6);
             transition: box-shadow 0.3s ease;
+            margin-bottom: 30px;
         }
         #search-bar:hover {
             box-shadow: 0 0 30px rgba(0, 255, 195, 0.8);
@@ -66,23 +70,70 @@
             flex-wrap: wrap;
             justify-content: center;
             margin: 20px 0;
+            max-width: 800px;
+            width: 100%;
         }
 
         /* Link button styling with animations */
         .link {
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.2);
             color: #00ffc3;
-            padding: 10px 20px;
+            padding: 12px 20px;
             border-radius: 5px;
             margin: 10px;
             text-decoration: none;
             font-weight: bold;
             transition: transform 0.2s, box-shadow 0.3s;
             box-shadow: 0 0 10px rgba(0, 255, 195, 0.5);
+            font-size: 16px;
         }
         .link:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
             box-shadow: 0 0 20px rgba(0, 255, 195, 0.8);
+        }
+
+        /* Input field for new links */
+        #new-link-input {
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+            width: 250px;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 255, 195, 0.3);
+        }
+
+        /* Button for adding links */
+        #add-link-btn {
+            background-color: #00ffc3;
+            color: #000;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            font-size: 16px;
+        }
+        #add-link-btn:hover {
+            background-color: #00e1b2;
+            transform: scale(1.05);
+        }
+
+        /* Remove link button styling */
+        .remove-link {
+            background-color: #ff4d4d;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .remove-link:hover {
+            background-color: #ff1a1a;
+            transform: scale(1.05);
         }
 
         /* Animations */
@@ -101,25 +152,48 @@
         </form>
         
         <div id="links">
-            <!-- Shortcut links will be added here -->
-            <a class="link" href="https://www.example.com">Example 1</a>
-            <a class="link" href="https://www.example.com">Example 2</a>
+            <!-- Existing links will be dynamically populated here -->
         </div>
+
+        <input id="new-link-input" type="text" placeholder="Enter new link URL" />
+        <button id="add-link-btn">Add Link</button>
     </div>
 
     <script>
         // Function to add a new link dynamically
-        function addLink(url, text) {
+        function addLink(url) {
             const linkContainer = document.getElementById('links');
             const newLink = document.createElement('a');
             newLink.className = 'link';
             newLink.href = url;
-            newLink.innerText = text;
+            newLink.target = '_blank';
+            newLink.innerText = url;
+
+            // Create a remove button
+            const removeButton = document.createElement('button');
+            removeButton.className = 'remove-link';
+            removeButton.innerText = 'Remove';
+            removeButton.onclick = function() {
+                linkContainer.removeChild(newLink);
+                linkContainer.removeChild(removeButton);
+            };
+
+            // Append link and button
             linkContainer.appendChild(newLink);
+            linkContainer.appendChild(removeButton);
         }
 
-        // Example of adding a link (you can modify this to take user input)
-        addLink('https://www.google.com', 'Google');
+        // Add link button event listener
+        document.getElementById('add-link-btn').onclick = function() {
+            const linkInput = document.getElementById('new-link-input');
+            const linkUrl = linkInput.value.trim();
+            if (linkUrl) {
+                addLink(linkUrl);
+                linkInput.value = ''; // Clear input field
+            } else {
+                alert("Please enter a valid link.");
+            }
+        };
     </script>
 </body>
 </html>
