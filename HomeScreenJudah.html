@@ -3,254 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Futuristic Startup Page</title>
+    <title>Custom Startup Page</title>
     <style>
-        /* Reset styles */
-        * {
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f0f5;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
-
-        body, html {
-            height: 100%;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow: hidden;
-            color: #00ffc3; /* Futuristic text color */
-            text-align: center;
-            background: url('https://images.pexels.com/photos/276452/pexels-photo-276452.jpeg?auto=compress&cs=tinysrgb&w=600') no-repeat center center fixed;
-            background-size: cover;
-            backdrop-filter: blur(5px);
-        }
-
-        /* Main container */
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            padding: 20px;
-            backdrop-filter: blur(5px);
-            border-radius: 15px;
-            box-shadow: 0 0 30px rgba(0, 255, 195, 0.2);
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        /* Logo styling */
-        #logo {
-            width: 350px;
-            margin-bottom: 30px;
-            filter: drop-shadow(0 0 15px #00ffc3) drop-shadow(0 0 30px #00ffc3);
-            animation: glowPulse 2s infinite alternate;
-        }
-
-        /* Search bar styling */
-        #search-bar {
-            width: 60%;
-            padding: 15px;
-            font-size: 18px;
-            border-radius: 25px;
-            border: none;
-            text-align: center;
-            outline: none;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #00ffc3;
-            box-shadow: 0 0 15px rgba(0, 255, 195, 0.6);
-            transition: box-shadow 0.3s ease;
-            margin-bottom: 30px;
-        }
-        #search-bar:hover {
-            box-shadow: 0 0 30px rgba(0, 255, 195, 0.8);
-        }
-
-        /* Links container */
-        #links {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin: 20px 0;
+        #container {
+            width: 90%;
             max-width: 800px;
-            width: 100%;
-        }
-
-        /* Link button styling */
-        .link {
-            background: rgba(255, 255, 255, 0.2);
-            color: #00ffc3;
-            padding: 12px 20px;
-            border-radius: 50px;
-            margin: 10px 0;
-            text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.2s, box-shadow 0.3s;
-            box-shadow: 0 0 10px rgba(0, 255, 195, 0.5);
-            font-size: 16px;
-            position: relative;
-        }
-        .link:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(0, 255, 195, 0.8);
-        }
-
-        /* Edit/Delete menu button styling */
-        .menu-button {
-            background-color: transparent;
-            border: none;
-            color: #00ffc3;
-            cursor: pointer;
-            font-size: 14px;
-            margin-left: 10px;
-        }
-
-        /* Add shortcut button styling */
-        #add-shortcut-btn {
-            background-color: #00ffc3;
-            color: #000;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
             margin-top: 20px;
         }
-        #add-shortcut-btn:hover {
-            background-color: #00e1b2;
-            transform: scale(1.05);
+        #link-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            width: 80%;
         }
-
-        /* Dialog box styles */
-        #dialog {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.8);
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 0 20px rgba(0, 255, 195, 0.8);
-            z-index: 1000;
-            color: #00ffc3;
-        }
-
-        /* Input fields for dialog */
-        #dialog input {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 5px;
-            outline: none;
-            color: #000;
-        }
-
-        /* Confirm and Cancel buttons */
-        .dialog-btn {
-            background-color: #00ffc3;
-            color: #000;
+        a.link {
+            text-decoration: none;
             padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
+            border-radius: 8px;
+            background-color: #007bff;
+            color: white;
+            font-size: 1em;
+            font-weight: bold;
+            display: inline-block;
             cursor: pointer;
-            margin: 5px;
-            transition: background-color 0.3s, transform 0.2s;
+            position: relative;
+            overflow: hidden;
         }
-        .dialog-btn:hover {
-            background-color: #00e1b2;
-            transform: scale(1.05);
+        a.link:hover {
+            background-color: #0056b3;
         }
-
-        /* Overlay for dialog */
-        #overlay {
+        #add-shortcut-btn {
+            padding: 10px 15px;
+            border-radius: 8px;
+            background-color: #28a745;
+            color: white;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            margin-left: auto;
+        }
+        #dialog, #overlay {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 900;
         }
-
-        /* Animations */
-        @keyframes glowPulse {
-            from { filter: drop-shadow(0 0 10px #00ffc3); }
-            to { filter: drop-shadow(0 0 25px #00ffc3); }
+        #overlay {
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        #dialog {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 300px;
+            z-index: 1000;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .dialog-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <!-- Overlay for dialog -->
-    <div id="overlay"></div>
-
-    <!-- Dialog box for adding shortcuts -->
-    <div id="dialog">
-        <h2>Add Shortcut</h2>
-        <input id="shortcut-name" type="text" placeholder="Shortcut Name" />
-        <input id="shortcut-url" type="text" placeholder="Shortcut URL" />
-        <br>
-        <button class="dialog-btn" id="confirm-add">Add</button>
-        <button class="dialog-btn" id="cancel-add">Cancel</button>
-    </div>
-
-    <!-- Main content container -->
-    <div class="container">
-        <img id="logo" src="https://techjudah.com/wp-content/uploads/2024/03/TechJudah-Logo.png" alt="TechJudah Logo">
-        <form action="https://www.google.com/search" method="get" target="_blank" style="width: 100%;">
-            <input id="search-bar" type="text" name="q" placeholder="Search...">
-        </form>
-
-        <div id="links">
-            <!-- Existing links will be dynamically populated here -->
-        </div>
-
+    <div id="container">
+        <div id="link-container"></div>
         <button id="add-shortcut-btn">Add Shortcut</button>
     </div>
 
+    <div id="overlay"></div>
+    <div id="dialog">
+        <label for="shortcut-name">Name:</label><br>
+        <input type="text" id="shortcut-name"><br><br>
+        <label for="shortcut-url">URL:</label><br>
+        <input type="url" id="shortcut-url"><br>
+        <div class="dialog-buttons">
+            <button id="confirm-add">Add</button>
+            <button id="cancel-add">Cancel</button>
+        </div>
+    </div>
+
     <script>
-        // Function to add a new link dynamically
+        const linkContainer = document.getElementById('link-container');
+
+        // Add shortcut function
         function addLink(name, url) {
-            const linkContainer = document.getElementById('links');
             const newLink = document.createElement('a');
             newLink.className = 'link';
-            newLink.href = url;
-            newLink.target = '_blank';
             newLink.innerText = name;
+            newLink.href = url; // Open the specified URL directly
+            newLink.target = '_blank'; // Open link in a new tab
 
-            // Create a menu button
-            const menuButton = document.createElement('button');
-            menuButton.className = 'menu-button';
-            menuButton.innerText = '⋮'; // Three dots menu icon
-
-            // Add event listener for menu
+            // Three-dot menu for editing/deleting
+            const menuButton = document.createElement('span');
+            menuButton.innerHTML = '⋮';
+            menuButton.style.cursor = 'pointer';
+            menuButton.style.marginLeft = '10px';
             menuButton.onclick = function(event) {
-                event.stopPropagation();
+                event.stopPropagation(); // Prevent triggering link click
                 const menu = document.createElement('div');
-                menu.className = 'link-menu';
                 menu.style.position = 'absolute';
-                menu.style.top = '0';
-                menu.style.right = '0';
-                menu.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+                menu.style.right = '10px';
+                menu.style.top = '10px';
+                menu.style.background = '#f0f0f5';
+                menu.style.border = '1px solid #ccc';
                 menu.style.borderRadius = '5px';
-                menu.style.boxShadow = '0 0 10px rgba(0, 255, 195, 0.5)';
-                menu.style.zIndex = '1000';
+                menu.style.padding = '5px';
+                menu.style.boxShadow = '0px 2px 5px rgba(0, 0, 0, 0.3)';
+                menu.style.zIndex = '10';
 
-                // Edit button
+                // Edit option
                 const editButton = document.createElement('button');
                 editButton.innerText = 'Edit';
-                editButton.style.color = '#00ffc3';
                 editButton.style.background = 'transparent';
                 editButton.style.border = 'none';
                 editButton.style.cursor = 'pointer';
                 editButton.onclick = function() {
                     openEditDialog(newLink, name, url);
-                    document.body.removeChild(menu); // Remove menu after editing
+                    document.body.removeChild(menu);
                 };
 
-                // Delete button
+                // Delete option
                 const deleteButton = document.createElement('button');
                 deleteButton.innerText = 'Delete';
                 deleteButton.style.color = '#ff4d4d';
@@ -259,7 +154,7 @@
                 deleteButton.style.cursor = 'pointer';
                 deleteButton.onclick = function() {
                     linkContainer.removeChild(newLink);
-                    document.body.removeChild(menu); // Remove menu after deleting
+                    document.body.removeChild(menu);
                 };
 
                 menu.appendChild(editButton);
@@ -267,7 +162,7 @@
                 newLink.appendChild(menu);
                 document.body.appendChild(menu);
 
-                // Remove menu if clicked elsewhere
+                // Remove menu if clicked outside
                 document.onclick = function() {
                     if (document.body.contains(menu)) {
                         document.body.removeChild(menu);
@@ -279,7 +174,7 @@
             linkContainer.appendChild(newLink);
         }
 
-        // Function to open edit dialog
+        // Open edit dialog
         function openEditDialog(linkElement, oldName, oldUrl) {
             document.getElementById('shortcut-name').value = oldName;
             document.getElementById('shortcut-url').value = oldUrl;
@@ -296,7 +191,7 @@
             };
         }
 
-        // Close dialog function
+        // Close dialog
         function closeDialog() {
             document.getElementById('dialog').style.display = 'none';
             document.getElementById('overlay').style.display = 'none';
@@ -322,7 +217,7 @@
             }
         };
 
-        // Cancel button functionality
+        // Cancel add shortcut dialog
         document.getElementById('cancel-add').onclick = closeDialog;
     </script>
 </body>
