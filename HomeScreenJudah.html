@@ -39,26 +39,30 @@
             width: 250px;
             padding: 20px;
             background: rgba(26, 26, 46, 0.9);
-            border: 1px solid #dc143c;
-            box-shadow: 0 0 20px rgba(220, 20, 60, 0.3);
+            border: 1px solid #8b0000;
+            box-shadow: 0 0 20px rgba(139, 0, 0, 0.3);
             overflow-y: auto;
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
         }
 
         .sidebar.right {
-            border-left: 1px solid #dc143c;
+            border-left: 1px solid #8b0000;
             border-right: none;
-            box-shadow: 0 0 20px rgba(220, 20, 60, 0.3);
+            box-shadow: 0 0 20px rgba(139, 0, 0, 0.3);
         }
 
         .sidebar h2 {
-            color: #dc143c;
+            color: #8b0000;
             text-transform: uppercase;
             font-size: 1.4em;
             margin-bottom: 15px;
-            text-shadow: 0 0 10px rgba(220, 20, 60, 0.7);
+            text-shadow: 0 0 10px rgba(139, 0, 0, 0.7);
             letter-spacing: 2px;
             animation: neonFlicker 2s infinite;
+            text-align: center;
         }
 
         @keyframes neonFlicker {
@@ -69,6 +73,7 @@
         .link-list {
             list-style: none;
             padding: 0;
+            flex-grow: 1;
         }
 
         .link-item {
@@ -79,18 +84,18 @@
             padding: 10px;
             background: rgba(40, 40, 60, 0.8);
             border-radius: 5px;
-            border: 1px solid #dc143c;
+            border: 1px solid #8b0000;
             transition: all 0.3s ease;
         }
 
         .link-item:hover {
             background: rgba(60, 60, 80, 0.8);
-            box-shadow: 0 0 15px rgba(220, 20, 60, 0.5);
+            box-shadow: 0 0 15px rgba(139, 0, 0, 0.5);
             transform: scale(1.02);
         }
 
         .link-item a {
-            color: #dc143c;
+            color: #8b0000;
             text-decoration: none;
             flex-grow: 1;
             transition: color 0.3s ease;
@@ -103,20 +108,20 @@
         .link-item button {
             background: none;
             border: none;
-            color: #dc143c;
+            color: #8b0000;
             cursor: pointer;
             font-size: 1.2em;
             transition: all 0.3s ease;
         }
 
         .link-item button:hover {
-            text-shadow: 0 0 10px rgba(220, 20, 60, 0.7);
+            text-shadow: 0 0 10px rgba(139, 0, 0, 0.7);
         }
 
         .add-link {
             width: 100%;
             padding: 10px;
-            background: linear-gradient(45deg, #dc143c, #1a1a2e);
+            background: linear-gradient(45deg, #8b0000, #1a1a2e);
             color: #e0e0e0;
             border: none;
             border-radius: 5px;
@@ -127,8 +132,8 @@
         }
 
         .add-link:hover {
-            background: linear-gradient(45deg, #b11230, #0f0f1f);
-            box-shadow: 0 0 15px rgba(220, 20, 60, 0.7);
+            background: linear-gradient(45deg, #6b0000, #0f0f1f);
+            box-shadow: 0 0 15px rgba(139, 0, 0, 0.7);
         }
 
         /* Center Content */
@@ -141,13 +146,13 @@
             padding: 20px;
             background: rgba(26, 26, 46, 0.7);
             border-radius: 10px;
-            box-shadow: 0 0 30px rgba(220, 20, 60, 0.2);
+            box-shadow: 0 0 30px rgba(139, 0, 0, 0.2);
         }
 
         .company-title {
             font-size: 2.5em;
-            color: #dc143c;
-            text-shadow: 0 0 15px rgba(220, 20, 60, 0.7);
+            color: #8b0000;
+            text-shadow: 0 0 15px rgba(139, 0, 0, 0.7);
             margin-bottom: 20px;
             letter-spacing: 3px;
             animation: neonFlicker 2s infinite;
@@ -162,13 +167,14 @@
 
         .search-bar form {
             display: flex;
+            align-items: center;
         }
 
         .search-bar input {
             flex-grow: 1;
             padding: 15px;
             background: rgba(26, 26, 46, 0.9);
-            border: 1px solid #dc143c;
+            border: 1px solid #8b0000;
             border-right: none;
             color: #e0e0e0;
             font-size: 1em;
@@ -178,12 +184,12 @@
 
         .search-bar input:focus {
             outline: none;
-            box-shadow: 0 0 15px rgba(220, 20, 60, 0.5);
+            box-shadow: 0 0 15px rgba(139, 0, 0, 0.5);
         }
 
         .search-bar button {
             padding: 15px 20px;
-            background: linear-gradient(45deg, #dc143c, #1a1a2e);
+            background: linear-gradient(45deg, #8b0000, #1a1a2e);
             border: none;
             color: #e0e0e0;
             cursor: pointer;
@@ -193,8 +199,8 @@
         }
 
         .search-bar button:hover {
-            background: linear-gradient(45deg, #b11230, #0f0f1f);
-            box-shadow: 0 0 15px rgba(220, 20, 60, 0.7);
+            background: linear-gradient(45deg, #6b0000, #0f0f1f);
+            box-shadow: 0 0 15px rgba(139, 0, 0, 0.7);
         }
 
         /* Shortcuts */
@@ -213,18 +219,18 @@
             padding: 15px;
             background: rgba(40, 40, 60, 0.8);
             border-radius: 10px;
-            border: 1px solid #dc143c;
+            border: 1px solid #8b0000;
             transition: all 0.3s ease;
             position: relative;
         }
 
         .shortcut-item:hover {
-            box-shadow: 0 0 20px rgba(220, 20, 60, 0.7);
+            box-shadow: 0 0 20px rgba(139, 0, 0, 0.7);
             transform: scale(1.05);
         }
 
         .shortcut-item a {
-            color: #dc143c;
+            color: #8b0000;
             text-decoration: none;
             text-align: center;
             font-size: 0.9em;
@@ -241,14 +247,14 @@
             right: 5px;
             background: none;
             border: none;
-            color: #dc143c;
+            color: #8b0000;
             cursor: pointer;
             font-size: 0.8em;
             transition: all 0.3s ease;
         }
 
         .shortcut-item .remove-btn:hover {
-            text-shadow: 0 0 10px rgba(220, 20, 60, 0.7);
+            text-shadow: 0 0 10px rgba(139, 0, 0, 0.7);
         }
 
         .add-shortcut {
@@ -259,20 +265,20 @@
             padding: 15px;
             background: rgba(40, 40, 60, 0.8);
             border-radius: 10px;
-            border: 1px solid #dc143c;
+            border: 1px solid #8b0000;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .add-shortcut:hover {
             background: rgba(60, 60, 80, 0.8);
-            box-shadow: 0 0 15px rgba(220, 20, 60, 0.5);
+            box-shadow: 0 0 15px rgba(139, 0, 0, 0.5);
         }
 
         .add-shortcut span {
             font-size: 2em;
-            color: #dc143c;
-            text-shadow: 0 0 10px rgba(220, 20, 60, 0.5);
+            color: #8b0000;
+            text-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
         }
 
         /* Modal for Adding Links/Shortcuts */
@@ -294,8 +300,8 @@
             padding: 20px;
             border-radius: 10px;
             width: 300px;
-            border: 1px solid #dc143c;
-            box-shadow: 0 0 20px rgba(220, 20, 60, 0.7);
+            border: 1px solid #8b0000;
+            box-shadow: 0 0 20px rgba(139, 0, 0, 0.7);
         }
 
         .modal-content input {
@@ -303,7 +309,7 @@
             padding: 10px;
             margin-bottom: 10px;
             background: rgba(40, 40, 60, 0.8);
-            border: 1px solid #dc143c;
+            border: 1px solid #8b0000;
             color: #e0e0e0;
             border-radius: 5px;
         }
@@ -311,7 +317,7 @@
         .modal-content button {
             width: 100%;
             padding: 10px;
-            background: linear-gradient(45deg, #dc143c, #1a1a2e);
+            background: linear-gradient(45deg, #8b0000, #1a1a2e);
             border: none;
             color: #e0e0e0;
             cursor: pointer;
@@ -320,11 +326,11 @@
         }
 
         .modal-content button:hover {
-            background: linear-gradient(45deg, #b11230, #0f0f1f);
+            background: linear-gradient(45deg, #6b0000, #0f0f1f);
         }
 
         .close {
-            color: #dc143c;
+            color: #8b0000;
             float: right;
             font-size: 28px;
             font-weight: bold;
@@ -333,371 +339,7 @@
 
         .close:hover {
             color: #1a1a2e;
-            text-shadow: 0 0 10px rgba(220, 20, 60, 0.7);
-        }
-
-        /* Fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-    </style>
-</head>
-<body>
-    <div class="container">
-        <!-- Left Sidebar: Work Corner -->
-        <div class="sidebar left" id="work-corner">
-            <h2>Work Corner</h2>
-            <ul class="link-list" id="work-links"></ul>
-            <button class="add-link" onclick="openModal('work')">Add Link</button>
-        </div>
-
-        <!-- Center Content -->
-        <div class="center">
-            <!-- Company Title -->
-            <h1 class="company-title">TechJudah</h1>
-            <!-- Google Search Bar -->
-            <div class="search-bar">
-                <form action="https://www.google.com/search" method="get">
-                    <input type="text" name="q" placeholder="Search Google or type a URL">
-                    <buttonraszamy
-
-System: I notice that the artifact content appears to be cut off. I'll provide the complete version of the updated startup page, ensuring it maintains the dark blue (#1a1a2e) and crimson red (#dc143c) color scheme, includes "TechJudah" above the search bar, and preserves all functionality (Google search bar, editable shortcuts, Work Corner, and School Corner). The design will remain cyberpunk-inspired, clean, and modern, with the requested color adjustments and branding.
-
-<xaiArtifact artifact_id="cf15602e-2d82-4175-809f-aadb63bcb3eb" artifact_version_id="159eac36-7e34-4788-a4c2-80732d4218e4" title="index.html" contentType="text/html">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechJudah Cyber Startup</title>
-    <style>
-        /* Global Styles */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Orbitron', sans-serif;
-            background: linear-gradient(45deg, #1a1a2e, #2a2a4e);
-            color: #e0e0e0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            animation: gradientShift 15s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .container {
-            display: flex;
-            width: 100%;
-            max-width: 1600px;
-            height: 100%;
-            backdrop-filter: blur(5px);
-        }
-
-        /* Sidebars */
-        .sidebar {
-            width: 250px;
-            padding: 20px;
-            background: rgba(26, 26, 46, 0.9);
-            border: 1px solid #dc143c;
-            box-shadow: 0 0 20px rgba(220, 20, 60, 0.3);
-            overflow-y: auto;
-            transition: all 0.3s ease;
-        }
-
-        .sidebar.right {
-            border-left: 1px solid #dc143c;
-            border-right: none;
-            box-shadow: 0 0 20px rgba(220, 20, 60, 0.3);
-        }
-
-        .sidebar h2 {
-            color: #dc143c;
-            text-transform: uppercase;
-            font-size: 1.4em;
-            margin-bottom: 15px;
-            text-shadow: 0 0 10px rgba(220, 20, 60, 0.7);
-            letter-spacing: 2px;
-            animation: neonFlicker 2s infinite;
-        }
-
-        @keyframes neonFlicker {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.95; }
-        }
-
-        .link-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .link-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            padding: 10px;
-            background: rgba(40, 40, 60, 0.8);
-            border-radius: 5px;
-            border: 1px solid #dc143c;
-            transition: all 0.3s ease;
-        }
-
-        .link-item:hover {
-            background: rgba(60, 60, 80, 0.8);
-            box-shadow: 0 0 15px rgba(220, 20, 60, 0.5);
-            transform: scale(1.02);
-        }
-
-        .link-item a {
-            color: #dc143c;
-            text-decoration: none;
-            flex-grow: 1;
-            transition: color 0.3s ease;
-        }
-
-        .link-item a:hover {
-            color: #1a1a2e;
-        }
-
-        .link-item button {
-            background: none;
-            border: none;
-            color: #dc143c;
-            cursor: pointer;
-            font-size: 1.2em;
-            transition: all 0.3s ease;
-        }
-
-        .link-item button:hover {
-            text-shadow: 0 0 10px rgba(220, 20, 60, 0.7);
-        }
-
-        .add-link {
-            width: 100%;
-            padding: 10px;
-            background: linear-gradient(45deg, #dc143c, #1a1a2e);
-            color: #e0e0e0;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .add-link:hover {
-            background: linear-gradient(45deg, #b11230, #0f0f1f);
-            box-shadow: 0 0 15px rgba(220, 20, 60, 0.7);
-        }
-
-        /* Center Content */
-        .center {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            background: rgba(26, 26, 46, 0.7);
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(220, 20, 60, 0.2);
-        }
-
-        .company-title {
-            font-size: 2.5em;
-            color: #dc143c;
-            text-shadow: 0 0 15px rgba(220, 20, 60, 0.7);
-            margin-bottom: 20px;
-            letter-spacing: 3px;
-            animation: neonFlicker 2s infinite;
-        }
-
-        /* Search Bar */
-        .search-bar {
-            width: 60%;
-            max-width: 600px;
-            margin-bottom: 40px;
-        }
-
-        .search-bar form {
-            display: flex;
-        }
-
-        .search-bar input {
-            flex-grow: 1;
-            padding: 15px;
-            background: rgba(26, 26, 46, 0.9);
-            border: 1px solid #dc143c;
-            border-right: none;
-            color: #e0e0e0;
-            font-size: 1em;
-            border-radius: 5px 0 0 5px;
-            transition: all 0.3s ease;
-        }
-
-        .search-bar input:focus {
-            outline: none;
-            box-shadow: 0 0 15px rgba(220, 20, 60, 0.5);
-        }
-
-        .search-bar button {
-            padding: 15px 20px;
-            background: linear-gradient(45deg, #dc143c, #1a1a2e);
-            border: none;
-            color: #e0e0e0;
-            cursor: pointer;
-            border-radius: 0 5px 5px 0;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .search-bar button:hover {
-            background: linear-gradient(45deg, #b11230, #0f0f1f);
-            box-shadow: 0 0 15px rgba(220, 20, 60, 0.7);
-        }
-
-        /* Shortcuts */
-        .shortcuts {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 20px;
-            width: 60%;
-            max-width: 600px;
-        }
-
-        .shortcut-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 15px;
-            background: rgba(40, 40, 60, 0.8);
-            border-radius: 10px;
-            border: 1px solid #dc143c;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .shortcut-item:hover {
-            box-shadow: 0 0 20px rgba(220, 20, 60, 0.7);
-            transform: scale(1.05);
-        }
-
-        .shortcut-item a {
-            color: #dc143c;
-            text-decoration: none;
-            text-align: center;
-            font-size: 0.9em;
-            transition: color 0.3s ease;
-        }
-
-        .shortcut-item a:hover {
-            color: #1a1a2e;
-        }
-
-        .shortcut-item .remove-btn {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            background: none;
-            border: none;
-            color: #dc143c;
-            cursor: pointer;
-            font-size: 0.8em;
-            transition: all 0.3s ease;
-        }
-
-        .shortcut-item .remove-btn:hover {
-            text-shadow: 0 0 10px rgba(220, 20, 60, 0.7);
-        }
-
-        .add-shortcut {
-            grid-column: span 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px;
-            background: rgba(40, 40, 60, 0.8);
-            border-radius: 10px;
-            border: 1px solid #dc143c;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .add-shortcut:hover {
-            background: rgba(60, 60, 80, 0.8);
-            box-shadow: 0 0 15px rgba(220, 20, 60, 0.5);
-        }
-
-        .add-shortcut span {
-            font-size: 2em;
-            color: #dc143c;
-            text-shadow: 0 0 10px rgba(220, 20, 60, 0.5);
-        }
-
-        /* Modal for Adding Links/Shortcuts */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            unwrappedHeight: 100%;
-            background: rgba(26, 26, 46, 0.9);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background: rgba(26, 26, 46, 0.9);
-            padding: 20px;
-            border-radius: 10px;
-            width: 300px;
-            border: 1px solid #dc143c;
-            box-shadow: 0 0 20px rgba(220, 20, 60, 0.7);
-        }
-
-        .modal-content input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            background: rgba(40, 40, 60, 0.8);
-            border: 1px solid #dc143c;
-            color: #e0e0e0;
-            border-radius: 5px;
-        }
-
-        .modal-content button {
-            width: 100%;
-            padding: 10px;
-            background: linear-gradient(45deg, #dc143c, #1a1a2e);
-            border: none;
-            color: #e0e0e0;
-            cursor: pointer;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-
-        .modal-content button:hover {
-            background: linear-gradient(45deg, #b11230, #0f0f1f);
-        }
-
-        .close {
-            color: #dc143c;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close:hover {
-            color: #1a1a2e;
-            text-shadow: 0 0 10px rgba(220, 20, 60, 0.7);
+            text-shadow: 0 0 10px rgba(139, 0, 0, 0.7);
         }
 
         /* Fonts */
